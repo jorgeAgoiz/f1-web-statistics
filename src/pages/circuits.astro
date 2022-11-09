@@ -1,0 +1,27 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Layout from "../layouts/Layout.astro";
+
+const response = await fetch("http://localhost:3012/circuits", {
+  method: "GET",
+  headers: {
+    "Content-Type": "application/json",
+    "api-key": import.meta.env.BACKEND_API_KEY,
+  },
+});
+const circuits = await response.json()
+console.log(circuits)
+---
+
+<Layout title="Bienvenido a la página de estadisticas de Formula 1">
+  <Header textTitle="Circuitos" />
+  {
+    circuits.length > 0 
+      ? circuits.map(circuit => <h1>{circuit.circuit_name}</h1>)
+      : null
+  }
+  <Footer />
+</Layout>
+
+<style></style>
