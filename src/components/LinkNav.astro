@@ -4,27 +4,27 @@ const { href, text } = Astro.props;
 
 <a class="button-rounded" href={href}>{text}</a>
 
-<style>
-.button-rounded {
-  min-width: 260px;
-  text-align: center;
-  height: auto;
-  color: #fff;
-  padding: 5px 10px;
-  font-weight: bold;
-  font-size: 2rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  display: inline-block;
-  outline: none;
-  border-radius: 5px;
-  border: 2px solid var(--color-persian-green);
-  background: var(--color-jet);
-  text-decoration: none;
-}
-.button-rounded:hover {
-  background: #fff;
-  color: var(--color-persian-green)
-}
+<style lang="css">
+  .button-rounded {
+    min-width: 260px;
+    text-align: center;
+    height: auto;
+    color: #fff;
+    padding: 5px 10px;
+    font-weight: bold;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    outline: none;
+    border-radius: 5px;
+    border: 2px solid var(--color-persian-green);
+    background: var(--color-jet);
+    text-decoration: none;
+  }
+  .button-rounded:hover {
+    background: #fff;
+    color: var(--color-persian-green)
+  }
 </style>

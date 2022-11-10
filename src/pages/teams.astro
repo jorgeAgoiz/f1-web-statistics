@@ -2,6 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Layout from '../layouts/Layout.astro';
+import TeamCard from '../components/TeamCard.astro';
 
 const response = await fetch("http://localhost:3012/teams", {
   method: "GET",
@@ -11,19 +12,31 @@ const response = await fetch("http://localhost:3012/teams", {
   },
 });
 const teams = await response.json()
-console.log(teams)
 ---
 
 <Layout title="Bienvenido a la página de estadisticas de Formula 1">
 	<Header textTitle='Equipos' />
-    {
+    <main>
+      {
         teams.length > 0
-            ? teams.map(team => <h1>{team.name}</h1>)
-            : null
-    }
+          ? teams.map((team: object) => <TeamCard team={team} />)
+          : <h1>Algo no ha ido bien...</h1>
+      }      
+    </main>
     <Footer />
 </Layout>
 
-<style>
-
+<style lang="css">
+  main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.6rem;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+  }
 </style>
