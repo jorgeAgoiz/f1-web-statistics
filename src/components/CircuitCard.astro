@@ -1,0 +1,38 @@
+---
+const { circuit } = Astro.props
+console.log(circuit)
+---
+
+<tr>
+    <td>
+        {circuit.gp_name}
+    </td>
+    <td>
+        {circuit.circuit_name}
+    </td>
+    <td>
+        {circuit.country}
+    </td>
+    <td>
+        <a class='button' href='#'>
+            Ver Estadísticas
+        </a>
+    </td>
+</tr>
+
+
+<style>
+    tr {
+        display: flex;
+        flex-direction: row;
+        justify-content:center;
+        align-items: center;
+        gap: .6rem;
+        width: 100%;
+    }
+    td {
+        width: 24%;
+        font-size: 1.2rem;
+        text-align: start;
+    }
+</style>
