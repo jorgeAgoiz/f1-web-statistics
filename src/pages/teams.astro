@@ -1,29 +1,32 @@
 ---
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import Layout from '../layouts/Layout.astro';
-import TeamCard from '../components/TeamCard.astro';
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Layout from "../layouts/Layout.astro";
+import TeamCard from "../components/TeamCard.astro";
 
-const response = await fetch("http://localhost:3012/teams", {
+export interface Team {
+  id: number;
+  name: string;
+  country: string;
+  url_logo: string;
+}
+
+const response: Response = await fetch("http://localhost:3012/teams", {
   method: "GET",
   headers: {
     "Content-Type": "application/json",
     "api-key": import.meta.env.BACKEND_API_KEY,
   },
 });
-const teams = await response.json()
+const teams: Array<Team> = await response.json();
 ---
 
 <Layout title="Bienvenido a la página de estadisticas de Formula 1">
-	<Header textTitle='Equipos' />
-    <main>
-      {
-        teams.length > 0
-          ? teams.map((team: object) => <TeamCard team={team} />)
-          : <h1>Algo no ha ido bien...</h1>
-      }      
-    </main>
-    <Footer />
+  <Header textTitle="Equipos" />
+  <main>
+    {teams.length > 0 && teams.map((team: Team) => <TeamCard team={team} />)}
+  </main>
+  <Footer />
 </Layout>
 
 <style lang="css">

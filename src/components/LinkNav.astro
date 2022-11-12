@@ -1,5 +1,10 @@
 ---
-const { href, text } = Astro.props;
+interface Props {
+  href: string;
+  text: string;
+}
+
+const { href, text } = Astro.props as Props;
 ---
 
 <a class="button-rounded" href={href}>{text}</a>
@@ -25,6 +30,6 @@ const { href, text } = Astro.props;
   }
   .button-rounded:hover {
     background: #fff;
-    color: var(--color-persian-green)
+    color: var(--color-persian-green);
   }
 </style>

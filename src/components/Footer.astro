@@ -1,79 +1,79 @@
 ---
-import { Icon } from 'astro-icon'
+import { Icon } from "astro-icon";
 ---
 
 <footer>
-    <a href="https://www.jorgeagoiz.es/">
-        <Icon name='website' title='Sitio Web' />    
-    </a>
-    <a href="#">
-        <Icon name='mail-outline' title='Email' />
-    </a>
-    <a href="https://www.linkedin.com/in/jorge-agoiz-pedraja-78321b39/">
-        <Icon name='linkedin-logo-fill' title='Linkedin' />
-    </a>
-    <a href="https://github.com/jorgeAgoiz">
-        <Icon name='logo-github' title='Github' />
-    </a>  
+  <a href="https://www.jorgeagoiz.es/">
+    <Icon name="website" title="Sitio Web" />
+  </a>
+  <a href="#">
+    <Icon name="mail-outline" title="Email" />
+  </a>
+  <a href="https://www.linkedin.com/in/jorge-agoiz-pedraja-78321b39/">
+    <Icon name="linkedin-logo-fill" title="Linkedin" />
+  </a>
+  <a href="https://github.com/jorgeAgoiz">
+    <Icon name="logo-github" title="Github" />
+  </a>
 </footer>
 
 <style lang="css">
-    footer {
-        width: 100%;
-        background-color: var(--color-middle-blue-green);
-        position: fixed;
-        bottom: 0;
-        color: var(--color-eerie-black);
-        text-align: center;
-        border-top: 4px solid var(--color-eerie-black);
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        padding: 0.6rem;
-    }
-    footer a {
-        text-decoration: none;
-        color: black;
-        border: none;
-    }
-    [astro-icon='mail-outline'] {
-        width: 40px;
-        height: 40px;
-        transition: all .2s ease-in;
-    }
-    [astro-icon='mail-outline']:hover {
-        color: red;
-        transform: scale(1.1);
-        cursor: pointer;
-    }
-    [astro-icon='linkedin-logo-fill'] {
-        width: 40px;
-        height: 40px;
-        transition: all .2s ease-in;
-    }
-    [astro-icon='linkedin-logo-fill']:hover {
-        color: blue;
-        transform: scale(1.1);
-        cursor: pointer;
-    }
-    [astro-icon='logo-github'] {
-        width: 40px;
-        height: 40px;
-        transition: all .2s ease-in;
-    }
-    [astro-icon='logo-github']:hover {
-        color: violet;
-        transform: scale(1.1);
-        cursor: pointer;
-    }
-    [astro-icon='website'] {
-        width: 40px;
-        height: 40px;
-        transition: all .2s ease-in;
-    }
-    [astro-icon='website']:hover {
-        color: orangered;
-        transform: scale(1.1);
-        cursor: pointer;
-    }
+  footer {
+    width: 100%;
+    background-color: var(--color-middle-blue-green);
+    position: fixed;
+    bottom: 0;
+    color: var(--color-eerie-black);
+    text-align: center;
+    border-top: 4px solid var(--color-eerie-black);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 0.6rem;
+  }
+  footer a {
+    text-decoration: none;
+    color: black;
+    border: none;
+  }
+  [astro-icon="mail-outline"] {
+    width: 40px;
+    height: 40px;
+    transition: all 0.2s ease-in;
+  }
+  [astro-icon="mail-outline"]:hover {
+    color: red;
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+  [astro-icon="linkedin-logo-fill"] {
+    width: 40px;
+    height: 40px;
+    transition: all 0.2s ease-in;
+  }
+  [astro-icon="linkedin-logo-fill"]:hover {
+    color: blue;
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+  [astro-icon="logo-github"] {
+    width: 40px;
+    height: 40px;
+    transition: all 0.2s ease-in;
+  }
+  [astro-icon="logo-github"]:hover {
+    color: violet;
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+  [astro-icon="website"] {
+    width: 40px;
+    height: 40px;
+    transition: all 0.2s ease-in;
+  }
+  [astro-icon="website"]:hover {
+    color: orangered;
+    transform: scale(1.1);
+    cursor: pointer;
+  }
 </style>

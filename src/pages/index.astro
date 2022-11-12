@@ -1,40 +1,39 @@
 ---
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
-import Layout from '../layouts/Layout.astro';
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Bienvenido a la página de estadisticas de Formula 1">
-	<Header textTitle='Estadísticas de Formula Uno' />
-	<main>
-		<img id="main-cover" src='main-cover-web.jpg' />	
-	</main>
-	<Footer />
+  <Header textTitle="Estadísticas de Formula Uno" />
+  <main>
+    <img id="main-cover" src="main-cover-web.jpg" />
+  </main>
+  <Footer />
 </Layout>
 
 <style lang="css">
-	main {
-		width: 100%;
-		height: auto;
-		display: flex;
-		flex-direction: column;
-		gap: 1rem;
-		justify-content: center;
-		align-items: center;
-		margin-top: 2rem;
-		margin-bottom: 5rem;
-	}
-	#main-cover {
-		max-width: 70%;
-  		height: auto;
-  		object-fit: cover;
-  		object-position: bottom;
-		border-radius: 12px;
-		filter: grayscale(70%);
-		transition: all 1s;
-	}
-	#main-cover:hover {
-		filter: brightness(120%);
-	}
-
+  main {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+  }
+  #main-cover {
+    max-width: 70%;
+    height: auto;
+    object-fit: cover;
+    object-position: bottom;
+    border-radius: 12px;
+    filter: grayscale(70%);
+    transition: all 1s;
+  }
+  #main-cover:hover {
+    filter: brightness(120%);
+  }
 </style>

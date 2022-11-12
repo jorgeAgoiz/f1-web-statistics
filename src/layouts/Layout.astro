@@ -1,6 +1,6 @@
 ---
 export interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
@@ -8,65 +8,69 @@ const { title } = Astro.props;
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+    <style is:global lang="css">
+      @font-face {
+        font-family: "Airstrike Bold";
+        src: url("./fonts/airstrikebold.ttf");
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Orbitron";
+        src: url("./fonts/Orbitron-Medium.ttf");
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Anaheim";
+        src: url("./fonts/Anaheim-Regular.ttf");
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          background-position-y: 0%;
+        }
+        50% {
+          background-position-y: 80%;
+        }
+      }
+      :root {
+        --accent: 124, 58, 237;
+        --accent-gradient: linear-gradient(
+          45deg,
+          rgb(var(--accent)),
+          #da62c4 30%,
+          white 60%
+        );
+        --color-snow: #fffafb;
+        --color-middle-blue-green: #7de2d1;
+        --color-persian-green: #339989;
+        --color-jet: #2b2c28;
+        --color-eerie-black: #131515;
+      }
+      html {
+        font-family: system-ui, sans-serif;
+        background-color: #f6f6f6;
+      }
+      body {
+        margin: 0;
+        box-sizing: border-box;
+        background-color: var(--color-apricot);
+      }
+    </style>
+  </body>
 </html>
-<style is:global lang="css">
-	@font-face {
-		font-family: "Airstrike Bold";
-		src: url("./fonts/airstrikebold.ttf");
-		font-style: normal;
-		font-weight: 400;
-		font-display: swap;
-	}
-	@font-face {
-		font-family: "Orbitron";
-		src: url("./fonts/Orbitron-Medium.ttf");
-		font-style: normal;
-		font-weight: 500;
-		font-display: swap;
-	}
-	@font-face {
-		font-family: "Anaheim";
-		src: url("./fonts/Anaheim-Regular.ttf");
-		font-style: normal;
-		font-weight: 400;
-		font-display: swap;
-	}
-	@keyframes pulse {
-		0%,
-		100% {
-			background-position-y: 0%;
-		}
-		50% {
-			background-position-y: 80%;
-		}
-	}
-
-	:root {
-		--accent: 124, 58, 237;
-		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
-		--color-snow: #fffafb;
-		--color-middle-blue-green: #7DE2D1;
-		--color-persian-green: #339989;
-		--color-jet: #2B2C28;
-		--color-eerie-black: #131515;
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background-color: #F6F6F6;
-	}
-	body {
-		margin: 0;
-		box-sizing: border-box;
-		background-color: var(--color-apricot);
-	}
-</style>

@@ -2,54 +2,32 @@
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Layout from "../layouts/Layout.astro";
-import CircuitCard from "../components/CircuitCard.astro";
+import CircuitsTable from "../components/CircuitsTable.astro";
 
-const response = await fetch("http://localhost:3012/circuits", {
+export interface Circuit {
+  id: number;
+  gp_name: string;
+  circuit_name: string;
+  location: string;
+  country: string;
+  distance: number;
+}
+
+const response: Response = await fetch("http://localhost:3012/circuits", {
   method: "GET",
   headers: {
     "Content-Type": "application/json",
     "api-key": import.meta.env.BACKEND_API_KEY,
   },
 });
-const circuits = await response.json()
+const circuits: Array<Circuit> = await response.json();
 ---
 
 <Layout title="Bienvenido a la página de estadisticas de Formula 1">
   <Header textTitle="Circuitos" />
-    <main>
-      <table>
-        <thead>
-          <tr>
-            <th class="table-titles">
-              Gran Premio
-            </th>
-            <th class="table-titles">
-              Nombre Circuito
-            </th>
-            <th class="table-titles">
-                País
-            </th>
-            <th class="table-titles">
-              Acción
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {
-            circuits.length > 0 
-              ? circuits.map((circuit: object) => <CircuitCard circuit={circuit} />)
-              : <h1>Algo no ha ido bien...</h1>
-          }  
-        </tbody>
-        <tfoot>
-          <tr>
-            <th>
-              Temporada: 2022
-            </th>
-          </tr>
-        </tfoot>
-      </table>  
-    </main>
+  <main>
+    <CircuitsTable circuits={circuits} />
+  </main>
   <Footer />
 </Layout>
 
@@ -64,68 +42,5 @@ const circuits = await response.json()
     margin-bottom: 5rem;
     box-sizing: border-box;
     padding: 2rem;
-  }
-  table {
-    background-color: var(--color-persian-green);
-    width: 95%;
-    padding: 1rem;
-    display: block;
-    border: 1px solid black;
-    border-radius: 8px; 
-    overflow-x: scroll; 
-    border-collapse: collapse;    
-  }
-  thead {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    justify-content: center;
-    align-items: stretch;
-    border-top: 1px solid black;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
-    background-color: var(--color-middle-blue-green);
-    padding-bottom: .6rem;
-    padding-top: .6rem;
-    font-family: "Orbitron";
-  }
-  thead tr {
-    display: flex;
-    flex-direction: row;
-    justify-content:center;
-    align-items: center;
-    gap: .5rem;
-    width: 100%;
-  } 
-  tbody {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
-    font-family: "Anaheim";
-  }
-  .table-titles {
-    width: 24%;
-    font-size: 1.2rem;
-    text-align: start;
-    margin-left: 6px;
-  }
-  .table-titles:last-child {
-    text-align: center;
-    margin-left: 0px;
-  }
-  tfoot {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid black;
-    padding-bottom: .8rem;
-    padding-top: .8rem;
-    color: white;
-    background-color: var(--color-jet);
   }
 </style>

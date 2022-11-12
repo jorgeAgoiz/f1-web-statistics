@@ -1,29 +1,35 @@
 ---
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import Layout from '../layouts/Layout.astro';
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Layout from "../layouts/Layout.astro";
+import DriverCard from "../components/DriverCard.astro";
 
-const response = await fetch("http://localhost:3012/drivers", {
+export interface Driver {
+  id: number,
+  name: string,
+  dorsal_number: number,
+  birthday: string,
+  country: string,
+  picture: string,
+}
+
+const response: Response = await fetch("http://localhost:3012/drivers", {
   method: "GET",
   headers: {
     "Content-Type": "application/json",
     "api-key": import.meta.env.BACKEND_API_KEY,
   },
 });
-const drivers = await response.json()
-console.log(drivers)
+const drivers: Array<Driver> = await response.json();
 ---
 
 <Layout title="Bienvenido a la página de estadisticas de Formula 1">
-	<Header textTitle='Pilotos' />
-    {
-        drivers.length > 0 ?
-            drivers.map(driver => <h1>{driver.name}</h1>)
-            : null
-    }
-    <Footer />
+  <Header textTitle="Pilotos" />
+  {
+    drivers.length > 0 &&
+      drivers.map((driver: Driver) => <DriverCard driver={driver} />)
+  }
+  <Footer />
 </Layout>
 
-<style lang="css">
-
-</style>
+<style lang="css"></style>
