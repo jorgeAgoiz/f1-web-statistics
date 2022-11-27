@@ -4,23 +4,24 @@ import type { Driver } from "../pages/drivers.astro";
 interface Props {
   driver: Driver;
 }
+
+const calculateAge = (birthday: string): number => {
+  const ageDifMs = Date.now() - new Date(birthday).getTime();
+  const ageDate = new Date(ageDifMs);
+  return Math.abs(ageDate.getUTCFullYear() - 1970);
+}
+
 const { driver } = Astro.props as Props;
-console.log(driver);
+const birthday: number = calculateAge(driver.birthday)
 ---
 
-<!-- <div class="driver-card">
-    <h1>{driver.name}</h1>
-    <h3>{driver.country}</h3>
-    <h3>{driver.dorsal_number}</h3>
-    <h3>{driver.birthday}</h3>
-</div> -->
 <div class="driver-card">
   <div class="driver-card-inner">
     <div class="driver-card-front">
       <h1>{driver.name}</h1>
       <h3>{driver.country}</h3>
-      <h3>{driver.dorsal_number}</h3>
-      <h3>{driver.birthday}</h3>
+      <h3>Dorsal {driver.dorsal_number}</h3>
+      <h3>{birthday} Años</h3>
     </div>
     <div class="driver-card-back">
       <img
@@ -60,6 +61,7 @@ console.log(driver);
     height: 100%;
     -webkit-backface-visibility: hidden; /* Safari */
     backface-visibility: hidden;
+    border-radius: 4px;
   }
   .driver-card-front {
     background-color: var(--color-persian-green);
