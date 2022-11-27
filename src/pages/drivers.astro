@@ -25,11 +25,26 @@ const drivers: Array<Driver> = await response.json();
 
 <Layout title="Bienvenido a la página de estadisticas de Formula 1">
   <Header textTitle="Pilotos" />
-  {
-    drivers.length > 0 &&
-      drivers.map((driver: Driver) => <DriverCard driver={driver} />)
-  }
+  <main>
+    {
+      drivers.length > 0 &&
+        drivers.map((driver: Driver) => <DriverCard driver={driver} />)
+    }    
+  </main>
   <Footer />
 </Layout>
 
-<style lang="css"></style>
+<style lang="css">
+  main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.6rem;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+  }
+</style>

@@ -1,17 +1,77 @@
 ---
-import type { Driver } from '../pages/drivers.astro';
+import type { Driver } from "../pages/drivers.astro";
 
 interface Props {
-    driver: Driver
+  driver: Driver;
 }
-const { driver } = Astro.props as Props
-console.log(driver)
+const { driver } = Astro.props as Props;
+console.log(driver);
 ---
 
-<main>
-    Tarjetas de Pilotos
-</main>
+<!-- <div class="driver-card">
+    <h1>{driver.name}</h1>
+    <h3>{driver.country}</h3>
+    <h3>{driver.dorsal_number}</h3>
+    <h3>{driver.birthday}</h3>
+</div> -->
+<div class="driver-card">
+  <div class="driver-card-inner">
+    <div class="driver-card-front">
+      <h1>{driver.name}</h1>
+      <h3>{driver.country}</h3>
+      <h3>{driver.dorsal_number}</h3>
+      <h3>{driver.birthday}</h3>
+    </div>
+    <div class="driver-card-back">
+      <img
+        src={driver.picture}
+        alt="Avatar"
+      />
+    </div>
+  </div>
+</div>
 
 <style>
-
+  .driver-card {
+    box-sizing: border-box;
+    border-radius: 4px;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .driver-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 1.2s;
+    transform-style: preserve-3d;
+  }
+  .driver-card:hover .driver-card-inner {
+    transform: rotateY(180deg);
+  }
+  .driver-card-front,
+  .driver-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+  }
+  .driver-card-front {
+    background-color: var(--color-persian-green);
+    border: 2px solid var(--color-jet);
+  }
+  .driver-card-back {
+    background-color: var(--color-persian-green);
+    border: 2px solid var(--color-jet);
+    transform: rotateY(180deg);
+  }
+  .driver-card-back img {
+    width: 100%;
+    height: 100%;
+  }
 </style>
