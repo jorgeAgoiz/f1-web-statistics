@@ -1,0 +1,26 @@
+---
+import Header from "../../components/common/Header.astro";
+import Footer from "../../components/common/Footer.astro";
+import Layout from "../../layouts/Layout.astro";
+
+const { circuitId } = Astro.params;
+---
+
+<script>
+  const test = document.querySelector("#prueba");
+  test?.addEventListener("click", () => console.log("PROBANDOOOOO"));
+</script>
+
+<Layout title="Bienvenido a la página de estadisticas de Formula 1">
+  <Header textTitle="Circuitos" />
+  <div id="prueba">
+    Información del circuito {circuitId}
+  </div>
+  <Footer />
+</Layout>
+
+<style lang="css">
+  div {
+    color: red;
+  }
+</style>

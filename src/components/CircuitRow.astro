@@ -7,6 +7,7 @@ interface Props {
 }
 
 const { circuit } = Astro.props as Props;
+
 ---
 
 <tr>
@@ -20,7 +21,7 @@ const { circuit } = Astro.props as Props;
     {circuit.country}
   </td>
   <td>
-    <a class="button-stats" href="#" title="Estadísticas">
+    <a class="button-stats" href={`/circuit/${circuit.id}`} title="Estadísticas">
       <Icon name="stats" width="30px" height="30px" />
       Ver Estadísticas
     </a>
