@@ -2,15 +2,15 @@
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Layout from "../layouts/Layout.astro";
-import DriverCard from "../components/DriverCard.astro";
+import DriversTable from "../components/DriversTable.astro";
 
 export interface Driver {
-  id: number,
-  name: string,
-  dorsal_number: number,
-  birthday: string,
-  country: string,
-  picture: string,
+  id: number;
+  name: string;
+  dorsal_number: number;
+  birthday: string;
+  country: string;
+  picture: string;
 }
 
 const response: Response = await fetch("http://localhost:3012/drivers", {
@@ -26,25 +26,21 @@ const drivers: Array<Driver> = await response.json();
 <Layout title="Bienvenido a la página de estadisticas de Formula 1">
   <Header textTitle="Pilotos" />
   <main>
-    {
-      drivers.length > 0 &&
-        drivers.map((driver: Driver) => <DriverCard driver={driver} />)
-    }    
+    <DriversTable drivers={drivers} />
   </main>
   <Footer />
 </Layout>
 
 <style lang="css">
   main {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 1.6rem;
-    justify-content: center;
-    align-items: center;
     width: 100%;
     height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: 2rem;
     margin-bottom: 5rem;
+    box-sizing: border-box;
+    padding: 2rem;
   }
 </style>

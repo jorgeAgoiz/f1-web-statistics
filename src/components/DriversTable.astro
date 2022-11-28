@@ -1,0 +1,110 @@
+---
+import type { Driver } from "../pages/drivers.astro";
+import DriverRow from "./DriverRow.astro";
+
+interface Props {
+  drivers: Array<Driver>;
+}
+
+const { drivers } = Astro.props;
+---
+
+<table>
+  <thead>
+    <tr>
+      <th class="table-titles"> Dorsal</th>
+      <th class="table-titles"> Nombre</th>
+      <th class="table-titles"> País</th>
+      <th class="table-titles"> Edad</th>
+    </tr>
+  </thead>
+  <tbody>
+    {
+      drivers.length > 0 &&
+        drivers.map((driver: Driver) => <DriverRow driver={driver} />)
+    }
+  </tbody>
+  <tfoot>
+    <tr>
+      <th> Temporada: 2022</th>
+    </tr>
+  </tfoot>
+</table>
+
+<style lang="css">
+  table {
+    width: 1140px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    overflow-x: hidden;
+    border-collapse: collapse;
+  }
+  @media (max-width: 1188px) {
+    table {
+      overflow-x: scroll;
+    }
+  }
+  thead {
+    display: flex;
+    flex-direction: row;
+    width: 1100px;
+    justify-content: center;
+    align-items: stretch;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    background-color: var(--color-middle-blue-green);
+    padding-bottom: 0.6rem;
+    padding-top: 0.6rem;
+    font-family: "Orbitron";
+  }
+  thead tr {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+  }
+  tbody {
+    display: flex;
+    flex-direction: column;
+    width: 1100px;
+    justify-content: center;
+    align-items: center;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    font-family: "Anaheim";
+  }
+  .table-titles {
+    min-width: 250px;
+    font-size: 1.2rem;
+    text-align: start;
+    margin-left: 6px;
+  }
+  .table-titles:last-child {
+    text-align: center;
+    margin-left: 0px;
+  }
+  tfoot {
+    width: 1100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    padding-bottom: 0.8rem;
+    padding-top: 0.8rem;
+    color: var(--color-snow);
+    background-color: var(--color-jet);
+    letter-spacing: 2px;
+    font-size: 1.2rem;
+    font-family: "Orbitron";
+  }
+</style>
