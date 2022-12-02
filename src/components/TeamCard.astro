@@ -8,11 +8,11 @@ interface Props {
 const { team } = Astro.props as Props;
 ---
 
-<div class="team-card">
+<article class="team-card">
   <h1>{team.name}</h1>
   <h3>{team.country}</h3>
   <img src={team.url_logo} width="155px" height="110px" />
-</div>
+</article>
 
 <style lang="css">
   .team-card {

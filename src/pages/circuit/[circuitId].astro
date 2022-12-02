@@ -2,25 +2,39 @@
 import Header from "../../components/common/Header.astro";
 import Footer from "../../components/common/Footer.astro";
 import Layout from "../../layouts/Layout.astro";
+import type { Circuit } from "../circuits.astro";
 
 const { circuitId } = Astro.params;
+const response: Response = await fetch(`${import.meta.env.BASE_URL_DEV}circuits/${circuitId}`, {
+  method: "GET",
+  headers: {
+    "Content-Type": "application/json",
+    "api-key": import.meta.env.BACKEND_API_KEY,
+  },
+});
+const circuit: Circuit = await response.json();
 ---
-
-<script>
-  const test = document.querySelector("#prueba");
-  test?.addEventListener("click", () => console.log("PROBANDOOOOO"));
-</script>
 
 <Layout title="Bienvenido a la página de estadisticas de Formula 1">
   <Header textTitle="Circuitos" />
-  <div id="prueba">
-    Información del circuito {circuitId}
-  </div>
+  <main>
+    <div class="circuit-details">
+      <h1>{circuit.gp_name}</h1>
+      <h2>Nombre del circuito: {circuit.circuit_name}</h2>
+      <h3>Localización: {circuit.location}</h3>
+      <h3>País: {circuit.country}</h3>
+      <h2>Distancia: {circuit.distance}</h2>
+    </div>
+  </main>
   <Footer />
 </Layout>
 
 <style lang="css">
-  div {
-    color: red;
+  main {
+    width: 100%;
+  }
+  .circuit-details {
+    width: 100%;
+    text-align: center;
   }
 </style>
