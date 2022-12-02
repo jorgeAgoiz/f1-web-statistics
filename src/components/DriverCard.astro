@@ -3,13 +3,12 @@ import type { Driver } from "../pages/drivers.astro";
 import { calculateAge } from "../utils/calculateAge";
 
 interface Props {
-    driver: Driver
+  driver: Driver;
 }
 
 const { driver } = Astro.props as Props;
-const backgroundImage: string = `url(${driver.picture}) center center no-repeat`
-const backgroundImageHover: string = `url(${driver.picture}) left center no-repeat`
-
+const backgroundImage: string = `url(${driver.picture}) center center no-repeat`;
+const backgroundImageHover: string = `url(${driver.picture}) left center no-repeat`;
 ---
 
 <article class="driver-card">
@@ -21,7 +20,7 @@ const backgroundImageHover: string = `url(${driver.picture}) left center no-repe
   </section>
 </article>
 
-<style lang="css" define:vars={{backgroundImage, backgroundImageHover}}>
+<style lang="css" define:vars={{ backgroundImage, backgroundImageHover }}>
   .driver-card_border {
     height: 369px;
     width: 290px;
@@ -45,7 +44,7 @@ const backgroundImageHover: string = `url(${driver.picture}) left center no-repe
     align-items: center;
     position: relative;
     background: var(--backgroundImage);
-    background-size: cover;    
+    background-size: cover;
   }
   .driver-card:hover {
     background: var(--backgroundImageHover);

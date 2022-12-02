@@ -31,6 +31,7 @@ const { textTitle } = Astro.props as Props;
     color: var(--color-eerie-black);
     font-family: "Airstrike Bold";
     width: 90%;
+    animation: animate 2s ease-in-out;
   }
 
   @media (max-width: 600px) {
@@ -43,4 +44,13 @@ const { textTitle } = Astro.props as Props;
       font-size: 2.4rem;
     }
   }
+
+  @keyframes animate {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 </style>
