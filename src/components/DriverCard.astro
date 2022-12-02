@@ -1,0 +1,78 @@
+---
+import type { Driver } from "../pages/drivers.astro";
+import { calculateAge } from "../utils/calculateAge";
+
+interface Props {
+    driver: Driver
+}
+
+const { driver } = Astro.props as Props;
+const backgroundImage: string = `url(${driver.picture}) center center no-repeat`
+const backgroundImageHover: string = `url(${driver.picture}) left center no-repeat`
+
+---
+
+<article class="driver-card">
+  <section class="driver-card_border">
+    <h2>{driver.name}</h2>
+    <h4>Numero {driver.dorsal_number}</h4>
+    <h4>Pais: {driver.country}</h4>
+    <h4>{calculateAge(driver.birthday)} Años</h4>
+  </section>
+</article>
+
+<style lang="css" define:vars={{backgroundImage, backgroundImageHover}}>
+  .driver-card_border {
+    height: 369px;
+    width: 290px;
+    background: transparent;
+    border-radius: 10px;
+    transition: border 1s;
+    position: relative;
+  }
+  .driver-card_border:hover {
+    border: 1px solid var(--color-snow);
+  }
+  .driver-card {
+    height: 379px;
+    width: 300px;
+    border-radius: 10px;
+    transition: background 1s;
+    overflow: hidden;
+    box-shadow: 0 70px 63px -60px var(--color-jet);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: var(--backgroundImage);
+    background-size: cover;    
+  }
+  .driver-card:hover {
+    background: var(--backgroundImageHover);
+    background-size: 620px;
+  }
+  .driver-card:hover h2 {
+    opacity: 1;
+    color: var(--color-jet);
+  }
+  .driver-card:hover h4 {
+    opacity: 1;
+    color: var(--color-jet);
+  }
+  h2 {
+    font-family: "Orbitron";
+    color: var(--color-jet);
+    font-size: 1.2rem;
+    margin: 20px;
+    opacity: 0;
+    transition: opacity 1s;
+  }
+  h4 {
+    font-family: "Anaheim", Helvetica, Arial, sans-serif;
+    color: var(--color-jet);
+    font-size: 1rem;
+    margin: 20px;
+    opacity: 0;
+    transition: opacity 1s;
+  }
+</style>
