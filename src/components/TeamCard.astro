@@ -8,7 +8,7 @@ interface Props {
 const { team } = Astro.props as Props;
 ---
 
-<article class="team-card">
+<article class="team-card" title="Acceder a los datos del equipo">
   <h1>{team.name}</h1>
   <h3>{team.country}</h3>
   <img src={team.url_logo} width="155px" height="110px" />
@@ -31,6 +31,7 @@ const { team } = Astro.props as Props;
   .team-card:hover {
     background-color: var(--color-middle-blue-green);
     border: 4px solid black;
+    cursor: pointer;
   }
   .team-card:hover img {
     transform: scale(1.4);
