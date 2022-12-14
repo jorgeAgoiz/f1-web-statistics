@@ -9,15 +9,7 @@ interface Props {
 const { driver } = Astro.props as Props;
 const backgroundImage: string = `url(${driver.picture}) center center no-repeat`;
 const backgroundImageHover: string = `url(${driver.picture}) left center no-repeat`;
-
-const idButton: string = `more-info-${driver.id}`;
 ---
-
-<!-- Así funciona el addEventListener -->
-<script is:inline type="module" define:vars={{ id: idButton }}>
-  const testElement = document.getElementById(id);
-  testElement.addEventListener("focus", () => console.log("working!!"));
-</script>
 
 <article class="driver-card" title="Acceder a los datos del piloto">
   <section class="driver-card_border">
@@ -25,7 +17,7 @@ const idButton: string = `more-info-${driver.id}`;
     <h4>Numero {driver.dorsal_number}</h4>
     <h4>Pais: {driver.country}</h4>
     <h4>{calculateAge(driver.birthday)} Años</h4>
-    <a id={`more-info-${driver.id}`} href={`/driver/${driver.id}`}>+ Info</a>
+    <a href={`/driver/${driver.id}`}>+ Info</a>
   </section>
 </article>
 

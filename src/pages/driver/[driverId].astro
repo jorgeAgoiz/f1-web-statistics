@@ -1,0 +1,103 @@
+---
+import Footer from "../../components/common/Footer.astro";
+import Layout from "../../layouts/Layout.astro";
+import type { Driver } from "../../types/driver";
+import { calculateAge } from "../../utils/calculateAge";
+
+const { driverId } = Astro.params;
+
+const response: Response = await fetch(
+  `${import.meta.env.BASE_URL_DEV}drivers/${driverId}`,
+  {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "api-key": import.meta.env.BACKEND_API_KEY,
+    },
+  }
+);
+const driver: Driver = await response.json();
+---
+
+<Layout title="Bienvenido a la página de estadisticas de Formula 1">
+  <main>
+    <article class="personal-data-info">
+      <section class="personal-data-info_name">
+        <h1>{driver.name}</h1>
+      </section>
+      <section>
+        <h1>Dorsal</h1>
+        <h3>{driver.dorsal_number}</h3>
+      </section>
+      <section>
+        <h1>Nacionalidad</h1>
+        <h3>{driver.country}</h3>
+      </section>
+      <section>
+        <h1>Edad</h1>
+        <h3>{calculateAge(driver.birthday)} Años</h3>
+      </section>
+    </article>
+    <article class="general-stats-info">
+      <section>
+        <h1>Poles</h1>
+        <h3>4</h3>
+      </section>
+      <section>
+        <h1>Podiums</h1>
+        <h3>6</h3>
+      </section>
+      <section>
+        <h1>Victorias</h1>
+        <h3>2</h3>
+      </section>
+      <section>
+        <h1>Vueltas Rápidas</h1>
+        <h3>2</h3>
+      </section>
+    </article>
+  </main>
+  <Footer />
+</Layout>
+
+<style lang="css">
+  main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+  }
+  article.personal-data-info {
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+  }
+  .personal-data-info_name {
+    grid-column: 1 / 4;
+    grid-row: 1 / 2;
+    font-size: 3rem;
+    letter-spacing: 5px;
+    font-family: "Airstrike Bold";
+  }
+  article.general-stats-info {
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
+    justify-content: center;
+    align-items: center;
+  }
+  section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+</style>

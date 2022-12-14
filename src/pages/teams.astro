@@ -3,13 +3,7 @@ import Header from "../components/common/Header.astro";
 import Footer from "../components/common/Footer.astro";
 import Layout from "../layouts/Layout.astro";
 import TeamCard from "../components/TeamCard.astro";
-
-export interface Team {
-  id: number;
-  name: string;
-  country: string;
-  url_logo: string;
-}
+import type { Team } from "../types/team";
 
 const response: Response = await fetch(`${import.meta.env.BASE_URL_DEV}teams`, {
   method: "GET",

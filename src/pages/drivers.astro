@@ -3,15 +3,7 @@ import Header from "../components/common/Header.astro";
 import Footer from "../components/common/Footer.astro";
 import Layout from "../layouts/Layout.astro";
 import DriverCard from "../components/DriverCard.astro";
-
-export interface Driver {
-  id: number;
-  name: string;
-  dorsal_number: number;
-  birthday: string;
-  country: string;
-  picture: string;
-}
+import type { Driver } from "../types/driver";
 
 const response: Response = await fetch(`${import.meta.env.BASE_URL_DEV}drivers`, {
   method: "GET",

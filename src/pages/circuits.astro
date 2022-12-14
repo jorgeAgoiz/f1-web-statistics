@@ -3,15 +3,7 @@ import Header from "../components/common/Header.astro";
 import Footer from "../components/common/Footer.astro";
 import Layout from "../layouts/Layout.astro";
 import CircuitsTable from "../components/CircuitsTable.astro";
-
-export interface Circuit {
-  id: number;
-  gp_name: string;
-  circuit_name: string;
-  location: string;
-  country: string;
-  distance: number;
-}
+import type { Circuit } from "../types/circuit";
 
 const response: Response = await fetch(`${import.meta.env.BASE_URL_DEV}circuits`, {
   method: "GET",
