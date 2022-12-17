@@ -18,6 +18,7 @@ const { title } = Astro.props;
   <body>
     <slot />
     <style is:global lang="css">
+      /* Fuentes */
       @font-face {
         font-family: "Airstrike Bold";
         src: url("/fonts/airstrikebold.ttf");
@@ -39,6 +40,17 @@ const { title } = Astro.props;
         font-weight: 400;
         font-display: swap;
       }
+      @font-face {
+        font-family: Cyber;
+        src: url("https://assets.codepen.io/605876/Blender-Pro-Bold.otf");
+        font-display: swap;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      /* Animaciones */
       @keyframes pulse {
         0%,
         100% {
@@ -48,6 +60,73 @@ const { title } = Astro.props;
           background-position-y: 80%;
         }
       }
+      @keyframes glitch {
+        0% {
+          clip-path: var(--clip-one);
+        }
+        2%,
+        8% {
+          clip-path: var(--clip-two);
+          transform: translate(calc(var(--shimmy-distance) * -1%), 0);
+        }
+        6% {
+          clip-path: var(--clip-two);
+          transform: translate(calc(var(--shimmy-distance) * 1%), 0);
+        }
+        9% {
+          clip-path: var(--clip-two);
+          transform: translate(0, 0);
+        }
+        10% {
+          clip-path: var(--clip-three);
+          transform: translate(calc(var(--shimmy-distance) * 1%), 0);
+        }
+        13% {
+          clip-path: var(--clip-three);
+          transform: translate(0, 0);
+        }
+        14%,
+        21% {
+          clip-path: var(--clip-four);
+          transform: translate(calc(var(--shimmy-distance) * 1%), 0);
+        }
+        25% {
+          clip-path: var(--clip-five);
+          transform: translate(calc(var(--shimmy-distance) * 1%), 0);
+        }
+        30% {
+          clip-path: var(--clip-five);
+          transform: translate(calc(var(--shimmy-distance) * -1%), 0);
+        }
+        35%,
+        45% {
+          clip-path: var(--clip-six);
+          transform: translate(calc(var(--shimmy-distance) * -1%));
+        }
+        40% {
+          clip-path: var(--clip-six);
+          transform: translate(calc(var(--shimmy-distance) * 1%));
+        }
+        50% {
+          clip-path: var(--clip-six);
+          transform: translate(0, 0);
+        }
+        55% {
+          clip-path: var(--clip-seven);
+          transform: translate(calc(var(--shimmy-distance) * 1%), 0);
+        }
+        60% {
+          clip-path: var(--clip-seven);
+          transform: translate(0, 0);
+        }
+        31%,
+        61%,
+        100% {
+          clip-path: var(--clip-four);
+        }
+      }
+
+      /* Estilos y variables globales */
       :root {
         --accent: 124, 58, 237;
         --accent-gradient: linear-gradient(

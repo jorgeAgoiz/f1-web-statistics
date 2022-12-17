@@ -1,4 +1,5 @@
 ---
+import ButtonGlitched from "../../components/common/ButtonGlitched.astro";
 import Footer from "../../components/common/Footer.astro";
 import Layout from "../../layouts/Layout.astro";
 import type { Driver } from "../../types/driver";
@@ -7,6 +8,16 @@ import { calculateAge } from "../../utils/calculateAge";
 const { driverId } = Astro.params;
 
 const response: Response = await fetch(
+  `${import.meta.env.BASE_URL_DEV}grand-prix/best-results/${driverId}`,
+  {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "api-key": import.meta.env.BACKEND_API_KEY,
+    },
+  }
+);
+const responseDriver: Response = await fetch(
   `${import.meta.env.BASE_URL_DEV}drivers/${driverId}`,
   {
     method: "GET",
@@ -16,44 +27,45 @@ const response: Response = await fetch(
     },
   }
 );
-const driver: Driver = await response.json();
+const driverInfo = await responseDriver.json()
+const { victories, podiums, polePositions} = await response.json();
+
 ---
 
 <Layout title="Bienvenido a la página de estadisticas de Formula 1">
   <main>
+    <article class='buttons-box'>
+      <ButtonGlitched textPrimary='Volver' textSecondary='Inicio' /> 
+    </article>
     <article class="personal-data-info">
-      <section class="personal-data-info_name">
-        <h1>{driver.name}</h1>
+      <section class="personal-data-info_name"> 
+        <h1>{driverInfo.name}</h1>
       </section>
       <section>
         <h1>Dorsal</h1>
-        <h3>{driver.dorsal_number}</h3>
+        <h3>{driverInfo.dorsal_number}</h3>
       </section>
       <section>
         <h1>Nacionalidad</h1>
-        <h3>{driver.country}</h3>
+        <h3>{driverInfo.country}</h3>
       </section>
       <section>
         <h1>Edad</h1>
-        <h3>{calculateAge(driver.birthday)} Años</h3>
+        <h3>{calculateAge(driverInfo.birthday)} Años</h3>
       </section>
     </article>
     <article class="general-stats-info">
       <section>
         <h1>Poles</h1>
-        <h3>4</h3>
+        <h3>{polePositions?.length || 0}</h3>
       </section>
       <section>
         <h1>Podiums</h1>
-        <h3>6</h3>
+        <h3>{podiums?.length || 0}</h3>
       </section>
       <section>
         <h1>Victorias</h1>
-        <h3>2</h3>
-      </section>
-      <section>
-        <h1>Vueltas Rápidas</h1>
-        <h3>2</h3>
+        <h3>{victories?.length || 0}</h3>
       </section>
     </article>
   </main>
@@ -68,6 +80,16 @@ const driver: Driver = await response.json();
     gap: 2rem;
     justify-content: center;
     align-items: center;
+  }
+
+  article.buttons-box {
+    width: 90%;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2rem;
   }
   article.personal-data-info {
     width: 90%;
@@ -88,7 +110,7 @@ const driver: Driver = await response.json();
   article.general-stats-info {
     width: 90%;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 1fr;
     justify-content: center;
     align-items: center;
