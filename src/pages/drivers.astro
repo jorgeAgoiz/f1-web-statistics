@@ -4,22 +4,17 @@ import Footer from "../components/common/Footer.astro";
 import Layout from "../layouts/Layout.astro";
 import DriverCard from "../components/DriverCard.astro";
 import type { Driver } from "../types/driver";
+import { getDrivers } from "../utils/services";
 
-const response: Response = await fetch(`${import.meta.env.BASE_URL_DEV}drivers`, {
-  method: "GET",
-  headers: {
-    "Content-Type": "application/json",
-    "api-key": import.meta.env.BACKEND_API_KEY,
-  },
-});
-const drivers: Array<Driver> = await response.json();
+const drivers: Array<Driver> = await getDrivers();
 ---
 
 <Layout title="Bienvenido a la página de estadisticas de Formula 1">
   <Header textTitle="Pilotos" />
   <main>
     {
-      drivers.length > 0 && drivers.map(driver => <DriverCard driver={driver} />)
+      drivers.length > 0 &&
+        drivers.map((driver) => <DriverCard driver={driver} />)
     }
   </main>
   <Footer />

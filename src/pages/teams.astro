@@ -4,15 +4,9 @@ import Footer from "../components/common/Footer.astro";
 import Layout from "../layouts/Layout.astro";
 import TeamCard from "../components/TeamCard.astro";
 import type { Team } from "../types/team";
+import { getTeams } from "../utils/services";
 
-const response: Response = await fetch(`${import.meta.env.BASE_URL_DEV}teams`, {
-  method: "GET",
-  headers: {
-    "Content-Type": "application/json",
-    "api-key": import.meta.env.BACKEND_API_KEY,
-  },
-});
-const teams: Array<Team> = await response.json();
+const teams: Array<Team> = await getTeams();
 ---
 
 <Layout title="Bienvenido a la página de estadisticas de Formula 1">
