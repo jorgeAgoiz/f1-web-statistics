@@ -60,9 +60,11 @@ const { victories, podiums, polePositions }: BestResults =
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
     justify-content: center;
     align-items: center;
+    height: auto;
+    margin-bottom: 5rem;
   }
   section {
     width: 100%;
@@ -79,17 +81,21 @@ const { victories, podiums, polePositions }: BestResults =
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    gap: 2rem;
+    gap: 1rem;
   }
 
   article.personal-data-info {
     width: 50%;
+    height: 400px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
     justify-content: center;
     align-items: center;
-    gap: 2rem;
+    gap: .4rem;
+    background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+    border-radius: 8px;
+    border: 1px solid var(--color-jet)
   }
   .personal-data-info_name {
     grid-column: 1 / 4;
@@ -97,6 +103,7 @@ const { victories, podiums, polePositions }: BestResults =
     font-size: 3rem;
     letter-spacing: 5px;
     font-family: "Airstrike Bold";
+    text-align: center;
   }
   .personal-data-info_details h1 {
     font-family: "Anaheim";
@@ -114,6 +121,10 @@ const { victories, podiums, polePositions }: BestResults =
     grid-template-rows: 1fr;
     justify-content: center;
     align-items: center;
+    background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+    border: 2px solid var(--color-middle-blue-green);
+    border-radius: 8px;
+    color: white;
   }
   .general-stats-info_results h1 {
     font-family: "Anaheim";

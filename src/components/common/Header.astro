@@ -2,14 +2,16 @@
 import NavBar from "./NavBar.astro";
 
 interface Props {
-  textTitle: string;
+  textTitle?: string;
 }
 
 const { textTitle } = Astro.props as Props;
 ---
 
 <header>
-  <h1 class="main-title">{textTitle}</h1>
+  {
+    textTitle && <h1 class="main-title">{textTitle}</h1>
+  }
   <NavBar />
 </header>
 
@@ -22,6 +24,7 @@ const { textTitle } = Astro.props as Props;
     gap: 1rem;
     justify-content: start;
     align-items: center;
+    margin-top: 1.4rem;
   }
   .main-title {
     font-size: 4rem;

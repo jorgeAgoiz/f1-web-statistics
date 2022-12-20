@@ -1,6 +1,6 @@
 interface Args {
-  driverId: string | number | undefined;
-  circuitId: string | number | undefined;
+  driverId?: string | number | undefined;
+  circuitId?: string | number | undefined;
 }
 
 export const driverBasicInfo = ({ driverId }: Args) => {
