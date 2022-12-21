@@ -4,13 +4,11 @@ import Layout from "../layouts/Layout.astro";
 import DriverCard from "../components/DriverCard.astro";
 import type { Driver } from "../types/driver";
 import { getDrivers } from "../utils/services";
-import Header from "../components/common/Header.astro";
 
 const drivers: Array<Driver> = await getDrivers();
 ---
 
 <Layout title="Bienvenido a la página de estadisticas de Formula 1">
-  <Header />
   <main>
     {
       drivers.length > 0 &&
@@ -30,7 +28,7 @@ const drivers: Array<Driver> = await getDrivers();
     align-items: center;
     width: 100%;
     height: auto;
-    margin-top: 2rem;
+    margin-top: 5rem;
     margin-bottom: 5rem;
   }
 </style>

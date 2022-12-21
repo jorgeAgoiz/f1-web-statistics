@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon";
+import { menuOptions } from "../../utils/constants";
 ---
 
 <header>
@@ -9,11 +10,9 @@ import { Icon } from "astro-icon";
   </label>
   <div class="menu-wrapper">
     <ul>
-      <li><a href="/">Inicio</a></li>
-      <li><a href="/drivers">Pilotos</a></li>
-      <li><a href="/teams">Equipos</a></li>
-      <li><a href="/circuits">Circuitos</a></li>
-      <li><a href="/about">Acerca de</a></li>
+      {
+        menuOptions.map(option => <li><a href={option.href}>{option.title}</a></li>)    
+      }
     </ul>
   </div>
 </header>

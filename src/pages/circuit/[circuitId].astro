@@ -3,7 +3,6 @@ import Footer from "../../components/common/Footer.astro";
 import Layout from "../../layouts/Layout.astro";
 import type { Circuit } from "../../types/circuit";
 import { getCircuitById } from "../../utils/services";
-import Header from "../../components/common/Header.astro";
 
 const { circuitId } = Astro.params;
 
@@ -11,7 +10,6 @@ const circuit: Circuit = await getCircuitById({ circuitId });
 ---
 
 <Layout title="Bienvenido a la página de estadisticas de Formula 1">
-  <Header />
   <main>
     <div class="circuit-details">
       <h1>{circuit.gp_name}</h1>
@@ -27,6 +25,7 @@ const circuit: Circuit = await getCircuitById({ circuitId });
 <style lang="css">
   main {
     width: 100%;
+    margin-top: 5rem;
   }
   .circuit-details {
     width: 100%;

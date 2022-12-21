@@ -4,13 +4,11 @@ import Layout from "../layouts/Layout.astro";
 import TeamCard from "../components/TeamCard.astro";
 import type { Team } from "../types/team";
 import { getTeams } from "../utils/services";
-import Header from "../components/common/Header.astro";
 
 const teams: Array<Team> = await getTeams();
 ---
 
 <Layout title="Bienvenido a la página de estadisticas de Formula 1">
-  <Header />
   <main>
     {teams.length > 0 && teams.map((team: Team) => <TeamCard team={team} />)}
   </main>
@@ -27,7 +25,7 @@ const teams: Array<Team> = await getTeams();
     align-items: center;
     width: 100%;
     height: auto;
-    margin-top: 2rem;
+    margin-top: 5rem;
     margin-bottom: 5rem;
   }
 </style>
