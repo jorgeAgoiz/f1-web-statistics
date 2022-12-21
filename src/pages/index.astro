@@ -10,7 +10,7 @@ import Layout from "../layouts/Layout.astro";
     <video muted autoplay loop>
       <source src="videos/karting-video.mp4" type="video/mp4" />
     </video>
-    <h1 class="main-title">Estadísticas de la Formula Uno</h1>
+    <h1 class="main-title">Formula 1 - Temporada 2022</h1>
   </main>
   <Footer />
 </Layout>
@@ -46,9 +46,16 @@ import Layout from "../layouts/Layout.astro";
     gap: 1rem;
     justify-content: center;
     align-items: center;
-    margin-top: 2rem;
-    margin-bottom: 5rem;
+    /* margin-top: 2rem; */
+    margin-bottom: 4.1rem;
     text-align: center;
   }
-
+  @keyframes animate {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 </style>

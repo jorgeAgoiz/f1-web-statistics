@@ -1,16 +1,16 @@
 ---
-import Header from "../components/common/Header.astro";
 import Footer from "../components/common/Footer.astro";
 import Layout from "../layouts/Layout.astro";
 import TeamCard from "../components/TeamCard.astro";
 import type { Team } from "../types/team";
 import { getTeams } from "../utils/services";
+import Header from "../components/common/Header.astro";
 
 const teams: Array<Team> = await getTeams();
 ---
 
 <Layout title="Bienvenido a la página de estadisticas de Formula 1">
-  <Header textTitle="Equipos" />
+  <Header />
   <main>
     {teams.length > 0 && teams.map((team: Team) => <TeamCard team={team} />)}
   </main>

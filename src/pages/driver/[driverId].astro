@@ -1,6 +1,7 @@
 ---
 import ButtonBasic from "../../components/common/ButtonBasic.astro";
 import Footer from "../../components/common/Footer.astro";
+import Header from "../../components/common/Header.astro";
 import Layout from "../../layouts/Layout.astro";
 import type { BestResults, Driver } from "../../types/driver";
 import { calculateAge } from "../../utils/calculateAge";
@@ -16,6 +17,7 @@ const { victories, podiums, polePositions }: BestResults =
 ---
 
 <Layout title={driverInfo.name}>
+  <Header />
   <main>
     <article class="buttons-box">
       <ButtonBasic text="Volver" url="/drivers" />

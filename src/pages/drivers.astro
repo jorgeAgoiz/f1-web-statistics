@@ -1,16 +1,16 @@
 ---
-import Header from "../components/common/Header.astro";
 import Footer from "../components/common/Footer.astro";
 import Layout from "../layouts/Layout.astro";
 import DriverCard from "../components/DriverCard.astro";
 import type { Driver } from "../types/driver";
 import { getDrivers } from "../utils/services";
+import Header from "../components/common/Header.astro";
 
 const drivers: Array<Driver> = await getDrivers();
 ---
 
 <Layout title="Bienvenido a la página de estadisticas de Formula 1">
-  <Header textTitle="Pilotos" />
+  <Header />
   <main>
     {
       drivers.length > 0 &&

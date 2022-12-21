@@ -1,18 +1,21 @@
 ---
-import NavBar from "./NavBar.astro";
-
-interface Props {
-  textTitle?: string;
-}
-
-const { textTitle } = Astro.props as Props;
+import { Icon } from "astro-icon";
 ---
 
 <header>
-  {
-    textTitle && <h1 class="main-title">{textTitle}</h1>
-  }
-  <NavBar />
+  <input type="checkbox" id="active" />
+  <label for="active" class="menu-btn">
+    <Icon name="driving-wheel" title="Menu" />
+  </label>
+  <div class="menu-wrapper">
+    <ul>
+      <li><a href="/">Inicio</a></li>
+      <li><a href="/drivers">Pilotos</a></li>
+      <li><a href="/teams">Equipos</a></li>
+      <li><a href="/circuits">Circuitos</a></li>
+      <li><a href="/about">Acerca de</a></li>
+    </ul>
+  </div>
 </header>
 
 <style lang="css">
@@ -20,41 +23,101 @@ const { textTitle } = Astro.props as Props;
     width: 100%;
     height: auto;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 1rem;
     justify-content: start;
     align-items: center;
-    margin-top: 1.4rem;
   }
-  .main-title {
-    font-size: 4rem;
-    font-weight: 800;
+  .menu-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: var(--color-eerie-black);
+    clip-path: circle(25px at calc(100% - 45px) 45px);
+    transition: all 0.3s ease-in-out;
+    z-index: 4;
+  }
+  #active:checked ~ .menu-wrapper {
+    clip-path: circle(75%);
+  }
+  .menu-btn {
+    position: fixed;
+    z-index: 22;
+    right: 20px;
+    top: 20px;
+    height: 50px;
+    width: 50px;
     text-align: center;
-    padding: 0.4rem;
-    color: var(--color-eerie-black);
-    font-family: "Airstrike Bold";
-    width: 90%;
-    animation: animate 2s ease-in-out;
+    line-height: 50px;
+    border-radius: 50%;
+    font-size: 20px;
+    color: var(--color-snow);
+    cursor: pointer;
+    background: var(--color-eerie-black);
+    transition: all 0.3s ease-in-out;
   }
-
-  @media (max-width: 600px) {
-    .main-title {
-      font-size: 3rem;
+  #active:checked ~ .menu-btn {
+    color: var(--color-snow);
+  }
+  #active:checked ~ .menu-btn i:before {
+    content: "\f00d";
+  }
+  .menu-wrapper ul {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    list-style: none;
+    text-align: center;
+  }
+  .menu-wrapper ul li {
+    margin: 15px 0;
+  }
+  .menu-wrapper ul li a {
+    color: none;
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: 500;
+    padding: 5px 30px;
+    color: var(--color-snow);
+    border-radius: 50px;
+    background: var(--color-eerie-black);
+    position: relative;
+    line-height: 50px;
+    transition: all 0.3s ease;
+  }
+  .menu-wrapper ul li a:after {
+    position: absolute;
+    content: "";
+    background: var(--color-snow);
+    background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);
+    width: 104%;
+    height: 110%;
+    left: -2%;
+    top: -5%;
+    border-radius: 50px;
+    transform: scaleY(0);
+    z-index: -1;
+    animation: rotate 1.5s linear infinite;
+    transition: transform 0.3s ease;
+  }
+  .menu-wrapper ul li a:hover:after {
+    transform: scaleY(1);
+  }
+  .menu-wrapper ul li a:hover {
+    color: var(--color-snow);
+  }
+  input[type="checkbox"] {
+    display: none;
+  }
+  @keyframes rotate {
+    0% {
+      filter: hue-rotate(0deg);
+    }
+    100% {
+      filter: hue-rotate(360deg);
     }
   }
-  @media (max-width: 400px) {
-    .main-title {
-      font-size: 2.4rem;
-    }
-  }
-
-  @keyframes animate {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
 </style>
